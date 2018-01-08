@@ -28,6 +28,9 @@ https://finnian.io/blog/colourising-video-with-openfaas-serverless-functions/
 https://github.com/developius/repaint-the-past
 
 ````
+mc config host add minio http://tsachse720:9000 ZBPIIAOCJRY9QLUVEHQO vMIoCaBu9sSg4ODrSkbD9CGXtq0TTpq6kq7psLuE
+mc mb minio/colorization
+
 mc cp test_image_bw.jpg minio/colorization
 http_proxy="" curl -d '{"image": "test_image_bw.jpg"}' http://localhost:8080/function/colorization
 mc cp  minio/colorization/1515416868369_output.jpg .
