@@ -106,10 +106,11 @@ def handle(json_in):
 #            f.write(r.content)
 
         json_out = json_in
-        json_out['image'] = filename_out
+#        json_out['image'] = filename_out
+        json_out['image'] = 'colorized_' + json_in['image']
         json_out['duration'] = duration
 
         with nostdout():
-            minioClient.fput_object('colorization', filename_out, file_path_out)
+            minioClient.fput_object('colorization', json_out['image'], file_path_out)
 
         return json_out

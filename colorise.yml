@@ -10,5 +10,6 @@ functions:
     environment:
       read_timeout: 60
       write_timeout: 60
+      write_debug: true
     environment_file:
       - credentials.yml
