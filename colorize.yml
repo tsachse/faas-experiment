@@ -5,7 +5,7 @@ provider:
 functions:
   colorization:
     lang: Dockerfile
-    handler: ./colorise
+    handler: ./colorize
     image: openfaas-colorization
     environment:
       read_timeout: 60
