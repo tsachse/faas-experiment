@@ -11,9 +11,9 @@ export MINIO_ACCESS_KEY=ZBPIIAOCJRY9QLUVEHQO
 
 ./deploy_stack.sh
 
-faas-cli build -f ./colorise.yml
-faas-cli deploy -f ./colorise.yml
-faas-cli remove -f ./colorise.yml
+faas-cli build -f ./colorize.yml
+faas-cli deploy -f ./colorize.yml
+faas-cli remove -f ./colorize.yml
 `````
 ## minio
 
