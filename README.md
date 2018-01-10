@@ -34,4 +34,6 @@ mc mb minio/colorization
 mc cp test_image_bw.jpg minio/colorization
 http_proxy="" curl -d '{"image": "test_image_bw.jpg"}' http://localhost:8080/function/colorization
 mc cp  minio/colorization/1515416868369_output.jpg .
+
+curl http://tsachse720:8080/async-function/colorization -d '{"image": "IMG_1644.jpg"}' -H "X-Callback-Url: https://requestb.in/x4viy4x4"
 ````
