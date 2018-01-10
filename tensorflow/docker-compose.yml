@@ -1,0 +1,39 @@
+version: "3"
+services:
+
+# Core API services are pinned, HA is provided for functions.
+    gateway:
+        volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock"
+        ports:
+            - 8080:8080
+        image: functions/gateway:0.5.8-alpha
+        networks:
+            - functions
+        environment:
+            dnsrr: "true"  # Temporarily use dnsrr in place of VIP while issue persists on PWD
+            read_timeout: "20"
+            write_timeout: "20"
+        deploy:
+            placement:
+                constraints: [node.role == manager]
+
+    # Node.js gives OS info about the node (Host)
+    tensorflow:
+        image: jmkhael/faas-tensorflow:1.0
+        labels:
+            function: "true"
+        depends_on:
+            - gateway
+        networks:
+            - functions
+        environment:
+            no_proxy: "gateway"
+            https_proxy: $https_proxy
+            TF_CPP_MIN_LOG_LEVEL: "3"
+            read_timeout: "20"
+            write_timeout: "20"
+
+networks:
+    functions:
+        driver: overlay
