@@ -1,0 +1,13 @@
+provider:
+  name: faas
+  gateway: http://tsachse720:8080
+
+functions:
+  tensorflow:
+    lang: Dockerfile
+    handler: ./tensorflow
+    image: faas-tensorflow:latest
+    environment:
+      TF_CPP_MIN_LOG_LEVEL: "3"
+      read_timeout: "20"
+      write_timeout: "20"

@@ -37,3 +37,18 @@ mc cp  minio/colorization/1515416868369_output.jpg .
 
 curl http://tsachse720:8080/async-function/colorization -d '{"image": "IMG_1644.jpg"}' -H "X-Callback-Url: https://requestb.in/x4viy4x4"
 ````
+
+## Kittens vs Tarsiers - an introduction to serverless machine learning
+
+http://jmkhael.io/kittens-vs-tarsiers-an-introduction-to-serverless-machine-learning/
+
+`````
+mc policy public minio/colorization
+mc policy --recursive links minio/colorization
+
+faas-cli build -f ./tensorflow.yml
+faas-cli deploy -f ./tensorflow.yml
+
+curl http://tsachse720:8080/function/tensorflow -d 'http://tsachse720:9000/colorization/colorized_test_image_bw.jpg'
+tensorflow/test.sh
+`````
