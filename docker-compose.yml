@@ -75,7 +75,7 @@ services:
     # End
 
     # Minio
-    minio1:
+    minio:
       image: minio/minio
       volumes:
         - ./minio/data:/data
